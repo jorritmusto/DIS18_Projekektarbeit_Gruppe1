@@ -1,4 +1,5 @@
 import pandas as pd
+from rdflib import URIRef, BNode, Literal, Namespace, Graph, PROV
 
 """
 Pos: The position of the TSS in the genome.											
@@ -45,3 +46,13 @@ transcription start site = https://www.wikidata.org/wiki/Q2449354
 locus tag = https://www.wikidata.org/wiki/Q106227
 
 """
+
+transcription_start_site = URIRef('http://www.wikidata.org/entity/Q12418')
+position = Literal(38)
+
+g = Graph()
+
+g.bind("test", PROV)
+
+g.add(transcription_start_site, PROV.atlocation, position)
+
