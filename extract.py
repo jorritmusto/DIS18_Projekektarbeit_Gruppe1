@@ -27,8 +27,33 @@ Putative asRNA: Contains a '1' if the TSS might be related to an asRNA.
 Sequence −50 nt upstream + TSS (51nt): Contains the base of the TSS and the 50 nucleotides upstream of the TSS.											
 Overlap with RegulonDB: Contains an X for all primary and secondary TSS that match a RegulonDB TSS classified as primary or secondary (according to our scheme) with a maximum distance of three nucleotides.
 """
+mapping_df = pd.read_csv('mapping_table.csv', sep = ";")
 
-df = pd.read_excel('data/zjb999093409sd1.xlsx', sheet_name= 'TSS Map MasterTable', header=2, engine = 'openpyxl')
+df_list = []
+
+for index, row in mapping_df.iterrows():
+    file_name = row["name of excel file"]
+    sheet_name = row["name of sheet"]
+    header = int(row["header in row number"])
+
+    # read in excel file 
+    df = pd.read_excel("data/" + file_name, sheet_name = sheet_name, header = header, engine = 'openpyxl')
+
+    # unify column names 
+    df.rename(columns={row["TSS position called"]: 'position_of_tss', row["locus tag called"]: 'locus_tag'}, inplace=True)
+
+    # add column locus_tag
+    if not 'locus_tag' in df.columns:
+        df["locus_tag"] = None
+
+    # remove unnecessary columns 
+    df = df[['position_of_tss', 'locus_tag']]
+    
+    #concatinate dfs 
+    df_list.append(df)
+
+    df = pd.concat(df_list)
+    
 
 print(df)
 
@@ -47,12 +72,12 @@ locus tag = https://www.wikidata.org/wiki/Q106227
 
 """
 
-transcription_start_site = URIRef('http://www.wikidata.org/entity/Q12418')
-position = Literal(38)
+#transcription_start_site = URIRef('http://www.wikidata.org/entity/Q12418')
+#position = Literal(38)
 
-g = Graph()
+#g = Graph()
 
-g.bind("test", PROV)
+#g.bind("test", PROV)
 
-g.add(transcription_start_site, PROV.atlocation, position)
+#g.add(transcription_start_site, PROV.atlocation, position)
 
