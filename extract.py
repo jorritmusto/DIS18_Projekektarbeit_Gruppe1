@@ -40,14 +40,56 @@ for index, row in mapping_df.iterrows():
     df = pd.read_excel("data/" + file_name, sheet_name = sheet_name, header = header, engine = 'openpyxl')
 
     # unify column names 
-    df.rename(columns={row["TSS position called"]: 'position_of_tss', row["locus tag called"]: 'locus_tag'}, inplace=True)
+    df.rename(columns={row["TSS position called"]: 'position_of_tss', 
+                       row["locus tag called"]: 'locus_tag', 
+                       row["strand called"]: 'strand', 
+                       row["product description of gene called"]: 'product', 
+                       row["systematic id called"]: 'systematic_id', 
+                       row["gene name called"]: 'gene_name',
+                       row["start called"]: 'location_of_start',
+                       row["end called"]: 'location_of_end',
+                       row["PubMed ID called"]: 'pubmed_id',
+                       row["SL1344 identifier called"]: 'sl1344_id',
+                       row["length called"]: 'length'
+                       },inplace=True)
 
-    # add column locus_tag
-    if not 'locus_tag' in df.columns:
-        df["locus_tag"] = None
+    
+    # add not exisiting columns to dataframe and fill with None 
+    headers = ['position_of_tss',
+               'locus_tag', 
+               'strand', 
+               'product', 
+               'systematic_id', 
+               'gene_name', 
+               'location_of_start', 
+               'location_of_end', 
+               'pubmed_id',
+               'sl1344_id',
+               'length']
+    
+    for header in headers:
+        if not header in df.columns:
+            df[header] = None
+
 
     # remove unnecessary columns 
-    df = df[['position_of_tss', 'locus_tag']]
+    df = df[['position_of_tss', 
+             'locus_tag',
+                'strand', 
+               'product', 
+               'systematic_id', 
+               'gene_name', 
+               'location_of_start', 
+               'location_of_end', 
+               'pubmed_id',
+               'sl1344_id',
+               'length']]
+    
+
+    # Werte in column "Strand" müssen noch vereinheitlich werden 
+    
+
+
     
     #concatinate dfs 
     df_list.append(df)

@@ -1,4 +1,12 @@
-﻿name of excel file;name of sheet;header in row number;TSS position called;locus tag called
-zjb999093409sd1.xlsx;TSS Map MasterTable;2;Pos;Locus_tag
+﻿name of excel file;name of sheet;header in row number;TSS position called;locus tag called;strand called;product description of gene called;systematic id called;gene name called;start called;end called;PubMed ID called;SL1344 identifier called;length called
+zjb999093409sd1.xlsx;TSS Map MasterTable;2;Pos;Locus_tag;Strand;Product;;;;;;;GeneLength
 sd02.xlsx;TSS at ESP;1;"TSS 
-co-ordinate";
+co-ordinate";;;;;common gene name;;;;;
+sd02.xlsx;Leaderless mRNAs;1;"position of
+TSS";;strand;;;"common
+gene name";;;;ID (SL1344);
+sd01.xlsx;SL1344 annotation;3;;;Strand;EMBL product;Systematic ID;Gene name;Location of Start;Location of End;PubMed ID;"Alternate
+SL1344 identifier";"Length
+(nt)"
+pnas.1500203112.sd02.xlsx;Master Table chr.1 ;2;SuperPos;Locus_tag;SuperStrand;Product;;;;;;;GeneLength
+pnas.1500203112.sd02.xlsx;Master Table chr.2;2;SuperPos;Locus_tag;SuperStrand;Product;;;;;;;GeneLength
