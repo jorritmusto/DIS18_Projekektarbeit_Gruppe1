@@ -1,4 +1,5 @@
 import pandas as pd
+from rdflib import URIRef, BNode, Literal, Namespace, Graph, PROV
 
 """
 Pos: The position of the TSS in the genome.											
@@ -27,9 +28,9 @@ Sequence −50 nt upstream + TSS (51nt): Contains the base of the TSS and the 50
 Overlap with RegulonDB: Contains an X for all primary and secondary TSS that match a RegulonDB TSS classified as primary or secondary (according to our scheme) with a maximum distance of three nucleotides.
 """
 
-df = pd.read_excel('data/zjb999093409sd1.xlsx', sheet_name= 'TSS Map MasterTable', header=2, engine = 'openpyxl')
+# df = pd.read_excel('data/zjb999093409sd1.xlsx', sheet_name= 'TSS Map MasterTable', header=2, engine = 'openpyxl')
 
-print(df)
+# print(df)
 
 
 """
@@ -45,3 +46,33 @@ transcription start site = https://www.wikidata.org/wiki/Q2449354
 locus tag = https://www.wikidata.org/wiki/Q106227
 
 """
+
+# transcription_start_site = URIRef('http://www.wikidata.org/entity/Q12418')
+# position = Literal(38)
+
+# Define RDF namespaces
+nasp = Namespace("http://example.org/")
+nasp_gene = Namespace("http://example.org/gene/")
+nasp_length = Namespace("http://example.org/length/")
+nasp_start = Namespace("http://example.org/start/")
+nasp_end = Namespace("http://example.org/end/")
+
+# Create an RDF graph
+g = Graph()
+
+# Add triples for DNA length, start point, end point, and locus tag
+dna_length = nasp_length['dna_length']
+start_point = nasp_start['start_point']
+end_point = nasp_end['end_point']
+locus_tag = nasp_gene['locus_tag']
+
+g.add((dna_length, nasp['hasValue'], Literal(1000)))  # Example length
+g.add((start_point, nasp['hasValue'], Literal(1)))    # Example start point
+g.add((end_point, nasp['hasValue'], Literal(500)))    # Example end point
+g.add((locus_tag, nasp['hasValue'], Literal("Gene123")))  # Example locus tag
+
+# Serialize the RDF graph
+serialized_rdf = g.serialize(format='turtle')
+
+# Print the serialized RDF
+print(serialized_rdf)
