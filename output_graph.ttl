@@ -1,0 +1,9 @@
+@prefix ex: <http://example.org/> .
+
+ex: ex:locus_tag "b0001",
+        "b0002" ;
+    ex:product "fused aspartokinase I and homoserine dehydrogenase I",
+        "thr operon leader peptide" ;
+    ex:strand "+",
+        "-" .
+
