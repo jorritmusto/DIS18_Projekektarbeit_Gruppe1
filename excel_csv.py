@@ -1,3 +1,4 @@
+# todo before use: clean any unnecessary rows in excel, e.g. descripton rows
 import pandas as pd
 
 def excel(input_excel_path, columns_to_delete, output_csv_path):
@@ -12,3 +13,5 @@ if __name__ == "__main__":
     output_csv_path = '/Users/viktoriahellmann/dev/DIS18_Projekektarbeit_Gruppe1/data/csv/output_csv_file.csv'
 
     excel(input_excel_path, columns_to_delete, output_csv_path)
+
+# todo: add function to change csv to quick statements after clarification call
