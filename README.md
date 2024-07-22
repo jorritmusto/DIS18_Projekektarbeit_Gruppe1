@@ -13,15 +13,15 @@ Code mit black formattieren
 Dokumentation mit Dokumentationssystem wie mkdoks oder spinx erstellen und als GitHub-Page hosten
 Das Python Project Template für Cookiecutter nutzen]
 
-## DIS18_Projekektarbeit_Gruppe1
+# DIS18_Projekektarbeit_Gruppe1
 
-# Project Goal
+## Project Goal
 
 The goal of this project is to build a wikibase cloud instance containing TSS data. The project is build according to the FAIR principles.
 
-# What is TSS data? 
+## What is TSS data? 
 
-# What's in this repository
+## What's in this repository
 
 [WIP] In this project, data generated from sequencing data will be transferred to a knowledge graph. For this we use an Wikibase cloud instance. The instance can be reached with the following link: https://dis18project.wikibase.cloud
 Besides this, you'll fine some data to (semi-)automatically fill this instance. Additionally, you'll find some TSS data (SOURCE) thats used for the example usage section. 
@@ -29,7 +29,7 @@ Besides this, you'll fine some data to (semi-)automatically fill this instance. 
 In the Wikibase Cloud Instance, you'll find the following properties: 
 
 
-# Setup
+## Setup
 
 First, you need to clone this repository to your local dev environment. To do so, use git clone and the options given by github. After that, you can access these files in the following order: 
 
@@ -38,13 +38,13 @@ YYY:
 ZZZ: 
 sparql_statement.py: to get back every QUID + Label from the items in the Wikibase Cloud. 
 
-# Example Usage 
+## Example Usage 
 
 1. xxx
 2. yyy
 3. zzz
 
-# Learnings
+## Learnings
 
 To build this instance we gathered some learnings we want to display in this section. 
 At first, we weren't sure on how to get data as statements into the Cloud Instance. At first, we tried using pandas for reading the excel file and rdflib to create a knowledge graph. The excel file were split manually into an edges and a nodes section and code looked like this: 
