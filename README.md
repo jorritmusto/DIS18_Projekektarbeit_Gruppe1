@@ -28,15 +28,25 @@ Besides this, you'll fine some data to (semi-)automatically fill this instance. 
 
 In the Wikibase Cloud Instance, you'll find the following properties: 
 
+1. has locus tag (P6) [String]
+2. has length - (P7) [String]
+3. has strand (forward) - (P8) [String]
+4. has strand (reverse) - (P9) [String]
+5. has condition (P10) [String]
+6. has strand reverse - (P11) [String]
+7. has start position - (P12) [String]
+
+The other properties are deprecated.
+
 
 ## Setup
 
 First, you need to clone this repository to your local dev environment. To do so, use git clone and the options given by github. After that, you can access these files in the following order: 
 
-XXX: to convert the excel file to a XXX file. 
-YYY: 
-ZZZ: 
-sparql_statement.py: to get back every QUID + Label from the items in the Wikibase Cloud. 
+- XXX: to convert the excel file to a XXX file. 
+- YYY: 
+- ZZZ: 
+- sparql_statement.py: to get back every QUID + Label from the items in the Wikibase Cloud. 
 
 ## Example Usage 
 
