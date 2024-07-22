@@ -59,9 +59,11 @@ First, you need to clone this repository to your local dev environment. To do so
 To build this instance we gathered some learnings we want to display in this section. 
 At first, we weren't sure on how to get data as statements into the Cloud Instance. At first, we tried using pandas for reading the excel file and rdflib to create a knowledge graph. The excel file were split manually into an edges and a nodes section and code looked like this: 
 
-excel_nodes = pd.read_excel('data/nodes_zjb999093409sd1.xlsx')
-excel_edges = pd.read_excel('data/edges_zjb999093409sd1.xlsx')
-g.serialize(destination='output_graph.ttl', format='turtle')
+```python
+  excel_nodes = pd.read_excel('data/nodes_zjb999093409sd1.xlsx')
+  excel_edges = pd.read_excel('data/edges_zjb999093409sd1.xlsx')
+  g.serialize(destination='output_graph.ttl', format='turtle')
+```
 
 This attempt didn't work because we had a false understanding on what knowledge graphs would be. We had several attempts on this. 
 
