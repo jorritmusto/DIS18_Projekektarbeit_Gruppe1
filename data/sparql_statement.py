@@ -18,31 +18,33 @@ WHERE {
 LIMIT 10
 """
 
+
 def query(endpoint_url, sparql_query):
     try:
         # Define HTTP headers
-        headers = {
-            "Accept": "application/sparql-results+json"
-        }
-        
+        headers = {"Accept": "application/sparql-results+json"}
+
         # Make HTTP GET request to SPARQL endpoint with the query as parameter
-        response = requests.get(endpoint_url, params={"query": sparql_query}, headers=headers)
-        
+        response = requests.get(
+            endpoint_url, params={"query": sparql_query}, headers=headers
+        )
+
         # Check if request was successful
         if response.status_code == 200:
             results = response.json()
             return results
         else:
             print(f"Error: SPARQL query failed with status code {response.status_code}")
-    
+
     except Exception as e:
         print(f"Error executing SPARQL query: {e}")
+
 
 # Main execution
 if __name__ == "__main__":
     # Execute the SPARQL query
     results = query(endpoint_url, sparql_query)
-    
+
     if results:
         # Process the results
         for result in results["results"]["bindings"]:
