@@ -9,12 +9,11 @@ class CreateItemsTssTask(luigi.Task):
     
     
     def requires(self):
-        #return CreateItemsGenesTask()
-        return None
+        return CreateItemsGenesTask()
     
 
     def output(self):
-        return luigi.LocalTarget("data/{}").format(self.__class__.__name__)
+        return luigi.LocalTarget("data/hello.txt")
     
 
     def run(self):
@@ -65,11 +64,11 @@ class CreateItemsTssTask(luigi.Task):
 
         df_tss.to_csv("data/quick_statements/qs_tss.csv", sep = ";", )
 
-        with self.output().open("W") as output_file:
-            output_file.write("{} Done...").format(self.__class__.__name__)
+        with self.output().open("w") as output_file:
+            output_file.write("Done...")
 
 
         
 
 if __name__ == '__main__':
-    luigi.run()
+     luigi.build([CreateItemsTssTask()], workers=1, local_scheduler=True)

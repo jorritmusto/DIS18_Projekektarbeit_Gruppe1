@@ -11,7 +11,7 @@ class CreateItemsGenesTask(luigi.Task):
     
 
     def output(self):
-        return luigi.LocalTarget("data/{}_{}").format(self.__class__.__name__, self.date)
+        return luigi.LocalTarget("data/test.txt")
     
 
     def run(self):
@@ -53,5 +53,10 @@ class CreateItemsGenesTask(luigi.Task):
 
 
 
-        with self.output().open("W") as output_file:
-            output_file.write("{} Done...").format(self.__class__.__name__)
+        with self.output().open("w") as output_file:
+            output_file.write("Done...")
+
+
+
+if __name__ == '__main__':
+     luigi.build([CreateItemsGenesTask()], workers=5, local_scheduler=True)

@@ -16,7 +16,7 @@ class CreateInitialItemsTask(luigi.Task):
     
 
     def output(self):
-        return luigi.LocalTarget("data/{}_{}").format(self.__class__.__name__, self.date)
+        return luigi.LocalTarget("data/test2.txt")
     
 
     def run(self):
@@ -60,9 +60,5 @@ class CreateInitialItemsTask(luigi.Task):
             df_tss_item.to_csv(folder + "tss_item.csv", sep = ",", index = False)
 
         
-        with self.output().open("W") as output_file:
-            output_file.write("{} Done...").format(self.__class__.__name__)
-
-
-
-
+        with self.output().open("w") as output_file:
+            output_file.write("Done...")
