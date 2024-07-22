@@ -13,7 +13,7 @@ class CreateItemsTssTask(luigi.Task):
     
 
     def output(self):
-        return luigi.LocalTarget("data/hello.txt")
+        return luigi.LocalTarget(("data/{}.txt").format(__class__.__name__))
     
 
     def run(self):
@@ -62,7 +62,7 @@ class CreateItemsTssTask(luigi.Task):
 
         df_tss = df_tss[["qid", "Len", "Den", "P1", "P2", "P3", "P4", "P5"]]
 
-        df_tss.to_csv("data/quick_statements/qs_tss.csv", sep = ";", )
+        df_tss.to_csv("data/quick_statements/tss/qs_tss.csv", sep = ";", )
 
         with self.output().open("w") as output_file:
             output_file.write("Done...")

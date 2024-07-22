@@ -1,7 +1,7 @@
 import pandas as pd
 import luigi
 from create_initial_items import CreateInitialItemsTask
-
+from get_qid import *
 
 class CreateItemsGenesTask(luigi.Task):
     
@@ -11,20 +11,17 @@ class CreateItemsGenesTask(luigi.Task):
     
 
     def output(self):
-        return luigi.LocalTarget("data/test.txt")
+        return luigi.LocalTarget(("data/{}.txt").format(__class__.__name__))
     
 
     def run(self):
 
         # read in excel sheet 
         df = pd.read_excel("data/input_files/zjb999093409sd1.xlsx", sheet_name = "TSS Map MasterTable", header = 2, engine = 'openpyxl')
-        #print(df)
-
 
 
         # relevant columns for gene dataframe 
         df_genes = df[["Locus_tag", "Product", "GeneLength"]]
-
 
 
         # group by to delete duplicates
@@ -33,7 +30,7 @@ class CreateItemsGenesTask(luigi.Task):
         # adds column qid. qid is created automatically by wikibase
         df_genes["qid"] = None
 
-
+        # only keep important colmns
         df_genes = df_genes[["qid", "Locus_tag", "Product", "GeneLength"]]
 
 
@@ -46,17 +43,21 @@ class CreateItemsGenesTask(luigi.Task):
 
 
         #adds <is instance of> <gene>
-        df_genes["P4"] = "Q26"
+        df_qids = get_qids()
+
+        gene = "Gene"
+
+        # get qid of item Gene
+        qid = get_special_item_qid(label=gene,df= df_qids)
 
 
-        df_genes.to_csv("data/quick_statements/qs_genes.csv", sep = ",", index = False)
+        #adds <is instance of> <gene>
+        df_genes["P4"] = qid
+
+        # write quickstatements as csv
+        df_genes.to_csv("data/quick_statements/genes/qs_genes.csv", sep = ",", index = False)
 
 
 
         with self.output().open("w") as output_file:
             output_file.write("Done...")
-
-
-
-if __name__ == '__main__':
-     luigi.build([CreateItemsGenesTask()], workers=5, local_scheduler=True)

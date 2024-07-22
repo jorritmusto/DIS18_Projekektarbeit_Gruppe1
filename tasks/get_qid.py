@@ -5,6 +5,10 @@ import json
 
 def get_qids():
 
+    """
+        This function returns a daframe with all qids and labels of our wibase cloud instance
+    """
+
     endpoint_url = "https://dis18project.wikibase.cloud/query/sparql"
 
     # SPARQL query to get back the qids with the labels, Limit can be changed as needed
@@ -18,7 +22,6 @@ def get_qids():
       OPTIONAL { ?item rdfs:label ?label }
       BIND(REPLACE(STR(?item), "^.*Q", "Q") AS ?qid)
     }
-    LIMIT 10
     """
     qid = []
     label = []
@@ -57,11 +60,12 @@ def get_qids():
 
 
 def get_special_item_qid(label,df):
-    try:
-        for idx, elem in enumerate(df['label']):
-            if str(elem) == label:
-                qid = df['QID'][idx]
-
-        return qid
-    except Exception as e:
-        print(f"Error executing SPARQL query: {e}")
+    """
+        This function returns the qid for a given label of an item
+    """
+    for idx, elem in enumerate(df['label']):
+        if str(elem) == label:
+            qid = df['QID'][idx]
+        else:
+            print(("There is no qid yet for label: {}").format(label))
+    return qid
