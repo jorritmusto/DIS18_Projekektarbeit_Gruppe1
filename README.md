@@ -17,9 +17,55 @@ zusätzlich sinnvoll:
 
 ## Project Goal
 
-The goal of this project is to build a wikibase cloud instance containing TSS data. The project is build according to the FAIR principles.
+The goal of this project is to build a wikibase cloud instance containing data generated from sequencing. We aimed to transform TSS data into a knowledge graph. The project is build according to the FAIR principles.
+
+Objectives
+- Data Extraction: Extract data from sequencing outputs, specifically focusing on Transcriptional Start Sites (TSS).
+- Data Transformation: Convert the extracted data into RDF (Resource Description Framework) format suitable for a knowledge graph.
+- Knowledge Graph Creation: Populate a knowledge graph using the transformed data, utilizing either a custom Wikibase instance or Wikidata.
+
+The steps to do so would be: 
+
+1. Create an Instance
+2. Define & create properties in Wikibase Cloud Instance
+3. Import Data: prepare data & create a CSV for bulk uploads using QickStatements in Wikibase Cloud Instance
+4. Query the data using SPARQL
+5. Use this data to create a Knowledge Graph (preferably using Python)
+6. Use a tool like Neo4j to visualize these graphs
 
 ## What is TSS data? 
+
+A transcription start site (TSS) is the location where the first DNA nucleotide is transcribed into RNA. It is difficult to determine the exact position of the TSS using bioinformatics, but experimental methods can be used to locate it, notably high throughput sequencing. (France Génomique. 2024. Online available: https://www.france-genomique.org/technological-expertises/regulome/mapping-of-transcription-start-sites-tss/?lang=en)
+
+Our data contains the following information on TSS: 
+
+"""
+Pos: The position of the TSS in the genome.
+Strand: The strand of the TSS in the genome.
+detCount: The number of genomes in which this TSS was detected in the RNAseq data.
+Condition: The biological condition to which the rest of the line relates.
+detected: Contains a '1' if the TSS was detected in this condition.
+enriched: Contains a '1' if the TSS is enriched in this condition.
+stepHeight: The expression height change at the position of the TSS. This relates to the number of reads starting at this position.
+stepFactor: The factor of height change at the position of the TSS.
+enrichmentFactor: The enrichment factor at the position of the TSS.
+classCount: The number of classes to which this TSS was assigned.
+Locus_tag: The locus tag of the gene to which the classification relates.
+Product: The product description of this gene.
+UTRlength: The length of the untranslated region between the TSS and the respective gene (nt). (Only applies to 'primary' and 'secondary' TSS.)
+GeneLength: The length of the gene (nt).
+Primary: Contains a '1' if the TSS was classified as 'primary' with respect to the gene stated in 'locusTag'.
+Secondary: Contains a '1' if the TSS was classified as 'secondary' with respect to the gene stated in 'locusTag'.
+Internal: Contains a '1' if the TSS was classified as 'internal' with respect to the gene stated in 'locusTag'.
+Antisense: Contains a '1' if the TSS was classified as 'antisense' with respect to the gene stated in 'locusTag'.
+Automated: Contains a '1' if the TSS was detected automatically.
+Manual: Contains a '1' if the TSS was annotated manually.
+Putative sRNA: Contains a '1' if the TSS might be related to a novel sRNA.
+Putative asRNA: Contains a '1' if the TSS might be related to an asRNA.
+Sequence −50 nt upstream + TSS (51nt): Contains the base of the TSS and the 50 nucleotides upstream of the TSS.
+Overlap with RegulonDB: Contains an X for all primary and secondary TSS that match a RegulonDB TSS classified as primary or secondary (according to our scheme) with a maximum distance of three nucleotides.
+"""
+
 
 ## What's in this repository
 
