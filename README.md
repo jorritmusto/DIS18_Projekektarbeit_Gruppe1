@@ -128,7 +128,7 @@ From there we tried using Quick Statements. Here we learnt that they need to hav
 
 ## Ideas for additions 
 
-The use of Neo4j can help visualize the RDF graphs. 
+The use of Neo4j can help visualize the RDF graphs. As visualization currently is really simple there's room for optimisation.
 
 ## Glossary 
 
