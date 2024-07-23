@@ -1,0 +1,12 @@
+@prefix ns1: <http://example.org/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://dis18project.wikibase.cloud/entity/Q5> rdfs:label "Locus tag" ;
+    ns1:hasLocusTag "b0001" .
+
+<https://dis18project.wikibase.cloud/entity/Q7> rdfs:label "TSS_38_+" ;
+    ns1:hasCondition "M63_0.4" ;
+    ns1:hasLength "66" ;
+    ns1:hasLocusTag "b0001" ;
+    ns1:hasStrandForward "+" .
+
