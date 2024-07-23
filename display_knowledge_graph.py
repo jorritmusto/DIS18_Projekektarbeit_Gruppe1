@@ -31,4 +31,6 @@ nx.draw(
 )
 nx.draw_networkx_edge_labels(nx_graph, pos, edge_labels=edge_labels, font_color="red")
 
+plt.savefig("knowledge_graph.png", format="png")
+
 plt.show()
