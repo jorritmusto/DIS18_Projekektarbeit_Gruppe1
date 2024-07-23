@@ -30,8 +30,7 @@ The steps to do so would be:
 2. Define & create properties in Wikibase Cloud Instance
 3. Import Data: prepare data & create a CSV for bulk uploads using QickStatements in Wikibase Cloud Instance
 4. Query the data using SPARQL
-5. Use this data to create a Knowledge Graph (preferably using Python)
-6. Use a tool like Neo4j to visualize these graphs
+5. Use this data to create and display a Knowledge Graph
 
 ## What is TSS data? 
 
@@ -86,6 +85,18 @@ In the Wikibase Cloud Instance, you'll find the following properties:
 
 The other properties are deprecated.
 
+## Information on the files in this repo 
+
+Note: all files contain short documentation at the beginning of each file.
+
+### knowledge_graph.py
+
+This script automates the process of querying a Wikibase Cloud instance to retrieve data and convert it into a knowledge graph represented in RDF (Resource Description Framework) format. The script uses the requests library to execute SPARQL queries and the rdflib library to construct and serialize the RDF graph. It starts with defining a SPARQL query that fetches all relevant information from the Wikibase instance. The query retrieves items along with their properties such as locus tag, length, strand information, condition, and start position. Then, the script constructs an RDF graph using the rdflib library. It defines a namespace and properties, and dynamically adds triples to the graph based on the query results.
+
+### display_knowledge_graph.py
+
+This script visualizes an RDF knowledge graph using NetworkX and Matplotlib. The RDF graph is loaded from a Turtle file, converted into a NetworkX graph, and then visualized using Matplotlib.
+
 
 ## Setup
 
@@ -101,20 +112,46 @@ First, you need to clone this repository to your local dev environment. To do so
 1. xxx
 2. yyy
 3. zzz
+4. Run script "knowledge_graph.py" to create a knowledge graph out of the items in the instance.
+5. Run script "display_knowledge_graph.py" to create a simple visualization of the knowledge graph created. 
 
 ## Learnings
 
 To build this instance we gathered some learnings we want to display in this section. 
-At first, we weren't sure on how to get data as statements into the Cloud Instance. At first, we tried using pandas for reading the excel file and rdflib to create a knowledge graph. The excel file were split manually into an edges and a nodes section and code looked like this: 
-
-```python
-  excel_nodes = pd.read_excel('data/nodes_zjb999093409sd1.xlsx')
-  excel_edges = pd.read_excel('data/edges_zjb999093409sd1.xlsx')
-  g.serialize(destination='output_graph.ttl', format='turtle')
-```
-
-This attempt didn't work because we had a false understanding on what knowledge graphs would be. We had several attempts on this. 
+At first, we weren't sure on how to get data as statements into the Cloud Instance. At first, we tried using pandas for reading the excel file and rdflib to create a knowledge graph. The excel file were split manually into an edges and a nodes section. This attempt didn't work because we had a false understanding on what knowledge graphs would be. We had several attempts on this. 
 
 After giving up on this, we tried creating statements in our cloud instance manually, which worked good. At first, we started to set up some properties and items. With these we wanted to form statements. Here we learnt that it's essential to use the right data type in the properties. 
 From there we tried using Quick Statements. Here we learnt that they need to have a specific syntax to work, a csv file worked best for us. (Guidance on this can be found here: https://www.wikidata.org/wiki/Help:QuickStatements)
+
+## Ideas for additions 
+
+The use of Neo4j can help visualize the RDF graphs. 
+
+## Glossary 
+
+### Biological terms 
+- TSS: The transcription start site where transcription of a gene begins
+- Locus Tag: A unique identifier assigned to a specific gene or genetic locus
+- Strand: The directionality of the DNA or RNA strand involved in transcription or replication
+- Position: The specific location of a genetic feature on a chromosome
+
+### Technical terms
+- Knowledge Graph: A structured representation of data using entities and relationships to enable semantic querying and reasoning
+- RDF: Resource Description Framework, a standard for representing structured information about resources in a graph format
+- Namespace: A mechanism to avoid name conflicts by providing a unique context for identifiers
+- Turtle: A syntax for writing RDF data in a compact and human-readable form
+- NetworkX: A Python library for the creation, manipulation, and study of complex networks
+- Matplotlib: A Python library for creating static, interactive, and animated visualizations in a variety of formats
+- SPARQL: A query language and protocol for querying and manipulating RDF data in a semantic web context
+
+
+You can fine additional information and documentation here: 
+https://www.ibm.com/topics/knowledge-graph
+https://rdflib.readthedocs.io/en/stable/
+https://www.w3.org/TR/turtle/
+https://networkx.org/
+https://matplotlib.org/
+https://www.w3.org/TR/sparql11-query/
+https://jingdongsun.medium.com/creating-knowledge-graph-step-by-step-a383231acf2d
+
 
