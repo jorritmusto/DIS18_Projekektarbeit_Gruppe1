@@ -65,7 +65,7 @@ Our data contains the following information on TSS:
 - Overlap with RegulonDB: Contains an X for all primary and secondary TSS that match a RegulonDB TSS classified as primary or secondary (according to our scheme) with a maximum distance of three nucleotides.
 """
 
-We mainly used these data: Pos, Strand, Condition, Locus Tag
+We mainly used these data: Pos, Strand, Condition, Locus Tag, GeneLength
 
 
 ## What's in this repository
@@ -89,6 +89,37 @@ The other properties are deprecated.
 
 Note: all files contain short documentation at the beginning of each file.
 
+### create_initial_items.py 
+
+This task creates the quickstatments for the initial items that are referenced in the following tasks and stores them into data/quickstatements/initial_items. The items are:
+* Transcription Start Site 
+* Gene
+* Conditions
+    * M63_0.4
+    * LB_0.4
+    * LB_2.0
+
+
+### create_items_genes.py
+
+This task creates the quickstatments for gene items and stores them into data/quickstatements/genes. As label the locus_tag is used. The description is provided by the "Product" column of our input excel. Moreover, the gene length is added. An example of a statment is: 
+< b0001 > (thr operon leader peptide) < is instance of > < qid for Gene > < has length > < 66 >
+
+
+### create_items_tss.py
+
+This task creates the quickstatments for tss items and stores them into data/quickstatments/tss. As label a combination of the position and the strand is used, which is also written in the description. Moreover it adds information on:
+* position
+* strand 
+* qid of the gene it relates to 
+* qid under which condition it was detected 
+
+An example of a statment is:
+< 38_+ > (Transcription Start Site: Label was assembled by the the position and strand of the TSS) 
+< is instance of > < qid for TSS > < has position > < 38 > < is on strand > < + > < relates to > < qid of gene > 
+< detected under condition > < qid of condition >
+
+
 ### knowledge_graph.py
 
 This script automates the process of querying a Wikibase Cloud instance to retrieve data and convert it into a knowledge graph represented in RDF (Resource Description Framework) format. The script uses the requests library to execute SPARQL queries and the rdflib library to construct and serialize the RDF graph. It starts with defining a SPARQL query that fetches all relevant information from the Wikibase instance. The query retrieves items along with their properties such as locus tag, length, strand information, condition, and start position. Then, the script constructs an RDF graph using the rdflib library. It defines a namespace and properties, and dynamically adds triples to the graph based on the query results.
@@ -102,16 +133,20 @@ This script visualizes an RDF knowledge graph using NetworkX and Matplotlib. The
 
 First, you need to clone this repository to your local dev environment. To do so, use git clone and the options given by github. After that, you can access these files in the following order: 
 
-- XXX: to convert the excel file to a XXX file. 
-- YYY: 
-- ZZZ: 
+- create_initial_items: to create the initial items (*)
+- create_items_genes: to create the items for the different genes (*)
+- create_items_tss: to create the final items for the tss (*)
 - sparql_statement.py: to get back every QUID + Label from the items in the Wikibase Cloud. 
+
+(*) Note: The tasks are wrapped in the luigi framework. When running create_items_tss, the whole pipeline will run
+starting with create_initial_items.py. At the moment the quickstatments have to be inserted manually using the wikibase interface
+at a later point they should be inserted automatically. For the moment, one has to run the tasks one after another and insert them before running the following task. 
 
 ## Example Usage 
 
-1. xxx
-2. yyy
-3. zzz
+1. create the initial items and upload them into the wikibase instance 
+2. create the gene items and upload them into the wikibase instance
+3. create the tss items and upload them into the wikibase instance
 4. Run script "knowledge_graph.py" to create a knowledge graph out of the items in the instance.
 5. Run script "display_knowledge_graph.py" to create a simple visualization of the knowledge graph created. 
 
@@ -128,7 +163,9 @@ From there we tried using Quick Statements. Here we learnt that they need to hav
 
 ## Ideas for additions 
 
-The use of Neo4j can help visualize the RDF graphs. As visualization currently is really simple there's room for optimisation.
+- The use of Neo4j can help visualize the RDF graphs. As visualization currently is really simple there's room for optimisation.
+- Inserting the quick statments in each luigi task will automate the whole process 
+- providing an it_container in which credentials and env variables can be set, would make the process easier to handle
 
 ## Glossary 
 

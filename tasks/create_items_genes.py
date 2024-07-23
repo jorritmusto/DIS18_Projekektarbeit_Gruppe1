@@ -6,8 +6,8 @@ from get_qid import *
 class CreateItemsGenesTask(luigi.Task):
     
     
-    #def requires(self):
-    #    return CreateInitialItemsTask()
+    def requires(self):
+        return CreateInitialItemsTask()
     
 
     def output(self):
@@ -69,5 +69,5 @@ class CreateItemsGenesTask(luigi.Task):
 
 
 
-if __name__ == '__main__':
-     luigi.build([CreateItemsGenesTask()], workers=1, local_scheduler=True)
+#if __name__ == '__main__':
+#     luigi.build([CreateItemsGenesTask()], workers=1, local_scheduler=True)

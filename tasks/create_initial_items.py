@@ -196,3 +196,8 @@ class CreateInitialItemsTask(luigi.Task):
             }
         )
         return df
+    
+
+
+#if __name__ == '__main__':
+#     luigi.build([CreateInitialItemsTask()], workers=1, local_scheduler=True)
