@@ -115,6 +115,9 @@ First, you need to clone this repository to your local dev environment. To do so
 4. Run script "knowledge_graph.py" to create a knowledge graph out of the items in the instance.
 5. Run script "display_knowledge_graph.py" to create a simple visualization of the knowledge graph created. 
 
+A final knowledge graph with the example data used can look like this: 
+![ExampleImage](knowledge_graph.png)
+
 ## Learnings
 
 To build this instance we gathered some learnings we want to display in this section. 
