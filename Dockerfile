@@ -12,5 +12,3 @@ EXPOSE 3333
 
 # Run Luigi scheduler by default when the container launches
 CMD ["luigid", "--port", "3333"]
-
-CMD ["python", "-m", "luigi", "--module", "tasks.create_initial_items", "CreateInitialItemsTask"]

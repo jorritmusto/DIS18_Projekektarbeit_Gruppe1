@@ -6,8 +6,8 @@ from get_qid import *
 class CreateItemsGenesTask(luigi.Task):
     
     
-    def requires(self):
-        return CreateInitialItemsTask()
+    #def requires(self):
+    #    return CreateInitialItemsTask()
     
 
     def output(self):
@@ -35,11 +35,11 @@ class CreateItemsGenesTask(luigi.Task):
 
 
         # creates statement: <b0001> (thr operon leader peptide) <has length> <66>
-        df_genes = df_genes.rename(columns = {"Locus_tag": "Len", "Product": "Den", "GeneLength": "P3"})
+        df_genes = df_genes.rename(columns = {"Locus_tag": "Len", "Product": "Den", "GeneLength": "P7"})
 
 
         # adds quotes to the gene lengths  
-        df_genes["P3"] = df_genes["P3"].apply(lambda x: '"' + str(int(x))+ '"')
+        df_genes["P7"] = df_genes["P7"].apply(lambda x: '"' + str(int(x))+ '"')
 
 
         #adds <is instance of> <gene>
@@ -48,11 +48,14 @@ class CreateItemsGenesTask(luigi.Task):
         gene = "Gene"
 
         # get qid of item Gene
-        qid = get_special_item_qid(label=gene,df= df_qids)
+        try: 
+            qid = get_special_item_qid(label=gene,df= df_qids)
+        except Exception as e:
+            print("Please create item 'Gene' first within the inital statment task")
 
 
         #adds <is instance of> <gene>
-        df_genes["P4"] = qid
+        df_genes["P13"] = qid
 
         # write quickstatements as csv
         df_genes.to_csv("data/quick_statements/genes/qs_genes.csv", sep = ",", index = False)
@@ -61,3 +64,10 @@ class CreateItemsGenesTask(luigi.Task):
 
         with self.output().open("w") as output_file:
             output_file.write("Done...")
+
+
+
+
+
+if __name__ == '__main__':
+     luigi.build([CreateItemsGenesTask()], workers=1, local_scheduler=True)

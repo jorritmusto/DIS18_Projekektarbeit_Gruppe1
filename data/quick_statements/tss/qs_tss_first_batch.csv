@@ -197,7 +197,6 @@ qid,Len,Den,P13,P14,P15,P16,P17
 ,59728_+,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""59728""","""+""",Q66,Q10
 ,60268_-,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""60268""","""-""",Q66,Q10
 ,61083_-,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""61083""","""-""",Q67,Q10
-
 ,61281_+,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""61281""","""+""",Q67,Q10
 ,61477_+,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""61477""","""+""",Q67,Q11
 ,61897_-,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""61897""","""-""",Q67,Q10
@@ -1153,9 +1152,6 @@ qid,Len,Den,P13,P14,P15,P16,P17
 ,356893_-,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""356893""","""-""",,Q10
 ,356902_+,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""356902""","""+""",,Q10
 ,357500_-,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""357500""","""-""",Q342,Q10
-
-
-
 ,357938_-,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""357938""","""-""",Q342,Q10
 ,358680_-,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""358680""","""-""",Q343,Q12
 ,359257_+,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""359257""","""+""",Q345,Q11
@@ -1993,12 +1989,6 @@ qid,Len,Den,P13,P14,P15,P16,P17
 ,632780_+,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""632780""","""+""",Q591,Q10
 ,632856_-,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""632856""","""-""",Q590,Q10
 ,633721_+,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""633721""","""+""",Q591,Q12
-
-
-
-
-
-
 ,633776_+,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""633776""","""+""",Q591,Q10
 ,634075_-,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""634075""","""-""",Q592,Q10
 ,635657_-,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""635657""","""-""",Q593,Q10
@@ -3373,12 +3363,6 @@ qid,Len,Den,P13,P14,P15,P16,P17
 ,1055464_+,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""1055464""","""+""",Q964,Q10
 ,1055674_+,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""1055674""","""+""",Q964,Q10
 ,1055690_+,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""1055690""","""+""",Q964,Q10
-
-
--> Letzer insert 
-
-
-
 ,1056117_+,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""1056117""","""+""",Q964,Q10
 ,1056395_+,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""1056395""","""+""",Q964,Q10
 ,1056752_-,Transcription Start Site: Label was assembled by the the position and strand of the TSS,Q9,"""1056752""","""-""",Q965,Q10

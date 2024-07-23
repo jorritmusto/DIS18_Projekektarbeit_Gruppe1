@@ -1,0 +1,6 @@
+is instance of -> p13  Item
+is at position -> p14  String
+is on strand -> p15  string
+relates to -> p16  item
+detected under condition -> p17 item 
+has length -> p7

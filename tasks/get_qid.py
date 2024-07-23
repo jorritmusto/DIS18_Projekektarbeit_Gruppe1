@@ -66,6 +66,4 @@ def get_special_item_qid(label,df):
     for idx, elem in enumerate(df['label']):
         if str(elem) == label:
             qid = df['QID'][idx]
-        else:
-            print(("There is no qid yet for label: {}").format(label))
     return qid
