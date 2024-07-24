@@ -154,8 +154,10 @@ From there we tried using Quick Statements. Here we learnt that they need to hav
 ## Ideas for additions 
 
 - The use of Neo4j can help visualize the RDF graphs. As visualization currently is really simple there's room for optimisation.
-- Inserting the quick statements in each luigi task will automate the whole process 
-- providing an it_container in which credentials and env variables can be set, would make the process easier to handle
+- The Luigi pipeline can handle the whole process automatically if the authentication will be handled properly. With this, the pipeline will handle everything from reading in the excel files to creating the quick statements.
+- To create full automation, providing an it_container in which credentials and env variables can be set is necessary. Also, inserting the quick statements in each luigi task needs to be done for automation.
+- The modelling of the statements needs further adjustment in the future.
+
 
 ## Glossary 
 
