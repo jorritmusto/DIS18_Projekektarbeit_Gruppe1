@@ -125,7 +125,8 @@ First, you need to clone this repository to your local dev environment. To do so
 - create_initial_items: to create the initial items (*)
 - create_items_genes: to create the items for the different genes (*)
 - create_items_tss: to create the final items for the tss (*)
-- sparql_statement.py: to get back every QUID + Label from the items in the Wikibase Cloud. 
+- knowledge_graph.py: to get back information from Wikibase cloud and to create a knowledge graph
+- display_knowledge_graph.py: to visualize created knowledge graph
 
 (*) Note: The tasks are wrapped in the luigi framework. When running create_items_tss, the whole pipeline will run
 starting with create_initial_items.py. At the moment the quickstatments have to be inserted manually using the wikibase interface
