@@ -46,6 +46,8 @@ def query(endpoint_url, sparql_query):
         print(f"Error executing SPARQL query: {e}")
 
 
+# The example Namespace is generic and needs to be adapted
+
 ex = Namespace("http://example.org/")
 g = Graph()
 
