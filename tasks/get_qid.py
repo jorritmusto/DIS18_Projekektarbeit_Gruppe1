@@ -27,12 +27,12 @@ def get_qids():
     label = []
     try:
         # Define HTTP headers
-        headers = {
-            "Accept": "application/sparql-results+json"
-        }
+        headers = {"Accept": "application/sparql-results+json"}
 
         # Make HTTP GET request to SPARQL endpoint with the query as parameter
-        response = requests.get(endpoint_url, params={"query": sparql_query}, headers=headers)
+        response = requests.get(
+            endpoint_url, params={"query": sparql_query}, headers=headers
+        )
 
         # Check if request was successful
         if response.status_code == 200:
@@ -40,15 +40,11 @@ def get_qids():
             for result in results["results"]["bindings"]:
                 qid.append(result["qid"]["value"]) if "qid" in result else None
                 label.append(result["label"]["value"]) if "label" in result else None
-                df = pd.DataFrame(
-                    {'QID': qid,
-                     'label': label,
-                    })
+                df = pd.DataFrame({"QID": qid, "label": label,})
                 if df.empty:
                     print("No qids yet")
 
-                df.to_csv("data/overview_qids.csv", sep =";", index = False)
-            
+                df.to_csv("data/overview_qids.csv", sep=";", index=False)
 
             return df
         else:
@@ -58,12 +54,11 @@ def get_qids():
         print(f"Error executing SPARQL query: {e}")
 
 
-
-def get_special_item_qid(label,df):
+def get_special_item_qid(label, df):
     """
         This function returns the qid for a given label of an item
     """
-    for idx, elem in enumerate(df['label']):
+    for idx, elem in enumerate(df["label"]):
         if str(elem) == label:
-            qid = df['QID'][idx]
+            qid = df["QID"][idx]
     return qid
