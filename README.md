@@ -68,10 +68,10 @@ Our data contains the following information on TSS:
 We mainly used these data: Pos, Strand, Condition, Locus Tag, GeneLength
 
 
-## What's in this repository
+## What's in the Wikibase instance
 
-[WIP] In this project, data generated from sequencing data will be transferred to a knowledge graph. For this we use an Wikibase cloud instance. The instance can be reached with the following link: https://dis18project.wikibase.cloud
-Besides this, you'll fine some data to (semi-)automatically fill this instance. Additionally, you'll find some TSS data (SOURCE) thats used for the example usage section. 
+In this project, data generated from sequencing data will be transferred to a knowledge graph. For this, we use a Wikibase cloud instance. The instance can be reached with the following link: https://dis18project.wikibase.cloud
+Besides this, you'll find some data to (semi-)automatically fill this instance. Additionally, you'll find some TSS data (https://dl.acm.org/doi/10.1145/3397512) that's used for the example usage section. 
 
 In the Wikibase Cloud Instance, you'll find the following properties: 
 
@@ -82,6 +82,10 @@ In the Wikibase Cloud Instance, you'll find the following properties:
 5. has condition (P10) [String]
 6. has strand reverse - (P11) [String]
 7. has start position - (P12) [String]
+8. is instance of (P13) [Item]
+9. is at position (P14) [String]
+10. relates to (P16) [Item]
+11. detected under condition (P17) [Item]
 
 The other properties are deprecated.
 
@@ -91,7 +95,7 @@ Note: all files contain short documentation at the beginning of each file.
 
 ### create_initial_items.py 
 
-This task creates the quickstatments for the initial items that are referenced in the following tasks and stores them into data/quickstatements/initial_items. The items are:
+This task creates the quickstatements for the initial items that are referenced in the following tasks and stores them into data/quickstatements/initial_items. The items are:
 * Transcription Start Site 
 * Gene
 * Conditions
@@ -102,20 +106,20 @@ This task creates the quickstatments for the initial items that are referenced i
 
 ### create_items_genes.py
 
-This task creates the quickstatments for gene items and stores them into data/quickstatements/genes. As label the locus_tag is used. The description is provided by the "Product" column of our input excel. Moreover, the gene length is added. An example of a statment is: 
+This task creates the quickstatements for gene items and stores them into data/quickstatements/genes. As label the locus_tag is used. The description is provided by the "Product" column of our input excel. Moreover, the gene length is added. An example of a statement is: 
 < b0001 > (thr operon leader peptide) < is instance of > < qid for Gene > < has length > < 66 >
 
 
 ### create_items_tss.py
 
-This task creates the quickstatments for tss items and stores them into data/quickstatments/tss. As label a combination of the position and the strand is used, which is also written in the description. Moreover it adds information on:
+This task creates the quickstaetments for tss items and stores them into data/quickstatments/tss. As label a combination of the position and the strand is used, which is also written in the description. Moreover it adds information on:
 * position
 * strand 
 * qid of the gene it relates to 
 * qid under which condition it was detected 
 
-An example of a statment is:
-< 38_+ > (Transcription Start Site: Label was assembled by the the position and strand of the TSS) 
+An example of a statement is:
+< 38_+ > (Transcription Start Site: Label was assembled by the position and strand of the TSS) 
 < is instance of > < qid for TSS > < has position > < 38 > < is on strand > < + > < relates to > < qid of gene > 
 < detected under condition > < qid of condition >
 
@@ -164,7 +168,7 @@ From there we tried using Quick Statements. Here we learnt that they need to hav
 ## Ideas for additions 
 
 - The use of Neo4j can help visualize the RDF graphs. As visualization currently is really simple there's room for optimisation.
-- Inserting the quick statments in each luigi task will automate the whole process 
+- Inserting the quick statements in each luigi task will automate the whole process 
 - providing an it_container in which credentials and env variables can be set, would make the process easier to handle
 
 ## Glossary 
@@ -185,13 +189,13 @@ From there we tried using Quick Statements. Here we learnt that they need to hav
 - SPARQL: A query language and protocol for querying and manipulating RDF data in a semantic web context
 
 
-You can fine additional information and documentation here: 
-https://www.ibm.com/topics/knowledge-graph
-https://rdflib.readthedocs.io/en/stable/
-https://www.w3.org/TR/turtle/
-https://networkx.org/
-https://matplotlib.org/
-https://www.w3.org/TR/sparql11-query/
-https://jingdongsun.medium.com/creating-knowledge-graph-step-by-step-a383231acf2d
+You can find additional information and documentation here: 
+- https://www.ibm.com/topics/knowledge-graph
+- https://rdflib.readthedocs.io/en/stable/
+- https://www.w3.org/TR/turtle/
+- https://networkx.org/
+- https://matplotlib.org/
+- https://www.w3.org/TR/sparql11-query/
+- https://jingdongsun.medium.com/creating-knowledge-graph-step-by-step-a383231acf2d
 
 
