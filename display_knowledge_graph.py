@@ -2,6 +2,10 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from rdflib import Graph
 
+"""
+This script can visualize a turtle knowledge graph file.
+"""
+
 # Load the RDF graph from the Turtle file
 g = Graph()
 g.parse("knowledge_graph.ttl", format="turtle")
