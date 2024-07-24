@@ -1,18 +1,3 @@
-[ToDos: 
-Git-Repo:
-
-öffentliches Repo auf GitHub mit folgendem Inhalt:
-- Ziel und grundlegende Vorgehensweise (Concept Map/ Dokumentation)
-- Installationsanleitung inkl. Abhängigkeiten (setup.py, requirements.txt, etc) bei Nutzung von Docker Container auch Dockerfiles
-Workflows, Datenfluss
-- ggf. Code-Beispiele (Ausschnitt)
-- OSI-kompatible OpenSource-Lizenz (BSD, MIT, ISC, GPL)
-zusätzlich sinnvoll:
-- Ablage eines Snapshots auf Zenodo
-- Code mit black formattieren
-- Dokumentation mit Dokumentationssystem wie mkdoks oder spinx erstellen und als GitHub-Page hosten
-- Das Python Project Template für Cookiecutter nutzen]
-
 # DIS18_Projekektarbeit_Gruppe1
 
 ## Project Goal
