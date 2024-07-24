@@ -1,11 +1,14 @@
 import pandas as pd 
 import sys
 from itertools import count
-
 from sparql_ import * 
-
 import requests
 import json
+
+"""
+This script processes genomic data from an Excel file, generates QIDs for genes and transcription start sites (TSS), and prepares data for uploading to a Wikibase instance.
+"""
+
 
 # Wikibase Cloud SPARQL endpoint URL -> from 'Homepage' -> Query
 endpoint_url = "https://dis18project.wikibase.cloud/query/sparql"
